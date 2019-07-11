@@ -3,6 +3,7 @@ var computerGuess;
 var GuessesRemaining = 9
 var guessedLetters = []
 var wins = 0
+var lose = 0
 
 function KeyPress (){
     console.log ("a key was pressed")
@@ -18,6 +19,8 @@ document.onkeydown = function (event) {
     } else {
         if (GuessesRemaining === 1) {
             console.log ("You Lose!")
+            lose = lose + 1
+            document.querySelector ("#Losses").innerHTML = "Losses: " + lose
         } else {
             console.log ("Incorrect Guess")
             GuessesRemaining = GuessesRemaining - 1
