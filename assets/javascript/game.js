@@ -4,6 +4,7 @@ var GuessesRemaining = 9
 var guessedLetters = []
 var wins = 0
 var lose = 0
+var youWin = false
 
 function KeyPress (){
     console.log ("a key was pressed")
@@ -16,11 +17,16 @@ document.onkeydown = function (event) {
         console.log ("You Win!")
         wins = wins + 1 
         document.querySelector ("#Wins").innerHTML = "Wins: " + wins
+    if(youWin) {
+        resetGame()
+        youWin = false;
+    }
     } else {
-        if (GuessesRemaining === 1) {
+        if (GuessesRemaining === 0) {
             console.log ("You Lose!")
             lose = lose + 1
             document.querySelector ("#Losses").innerHTML = "Losses: " + lose
+            document.getElementById ("#GuessesSoFar").innerText = "Your Guesses so far: " + guessedLetters.join (', ')
         } else {
             console.log ("Incorrect Guess")
             GuessesRemaining = GuessesRemaining - 1
